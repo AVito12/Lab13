@@ -10,6 +10,7 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
+#include "Weapon.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
@@ -138,4 +139,9 @@ void ArollaballCharacter::OverlapBegin(UPrimitiveComponent* OverlappedComponent,
 		ItemsCollected++;
 		OtherActor->Destroy();
 	}
+}
+
+void ArollaballCharacter::AttachWeapon(AWeapon* Weapon)
+{
+	Weapon->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetIncludingScale, FName("RightSocket"));
 }
